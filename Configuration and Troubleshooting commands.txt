@@ -1,110 +1,82 @@
-
 For PC1:
 
 ipconfig /all
 
-ping 10.10.1.18
+ipconfig /all
 
-tracert 10.10.1.18
+ping 172.16.1.1
 
-CTRL+C
+ping 209.165.201.2
+
+ping 172.16.1.4
+
+ping 172.16.2.3
+
+ping 172.16.2.4
 
 
-For PC3:
+For PC2:
 
 ipconfig /all
 
-ping 10.10.1.98
+ipconfig /all
 
-tracert 10.10.1.98
+ping 172.16.1.1
 
-CTRL+C
+ping 209.165.201.2
 
+ping 172.16.1.3
 
-For R1:
+ping 172.16.2.3
 
-cisco
-enable
-class
-
-show ip interface brief 
-
-show ip route 
+ping 172.16.2.4
 
 
-For R3:
+For PC-A:
 
-cisco
-enable
-class
+ipconfig /all
 
-show ip interface brief 
+ping 209.165.201.2
 
-show ip route 
+ping 172.16.2.1
+
+ping 172.16.2.4
+
+ping 172.16.1.3
+
+ping 172.16.1.4
 
 
-For R2:
+To fixed R1( in PC-1):
 
-cisco
-enable
-class
+ssh -l Admin01 172.16.1.1
 
-show ip interface brief 
+cisco12345
 
-show ip route 
+show ip interface brief
 
 configure terminal
 
-interface s0/0/0
+interface g0/1
 
-ip address 10.10.1.5 255.255.255.252
+ip address 172.16.2.1 255.255.255.0
 
 no shutdown
 
+exit
 
-For PC1:
+show ip interface brief
 
-ping 10.10.1.18
+For PC-B:
 
-For PC3:
+ipconfig /all
 
-ping 10.10.1.98
+ping 209.165.201.2
 
+ping 172.16.2.1
 
+ping 172.16.2.3
 
+ping 172.16.1.3
 
-For PC2:
-
-ipv6config /all
-
-ping 2001:DB8:1:4::2
-
-tracert 2001:DB8:1:4::2
-
-For PC4:
-
-ipv6config /all
-
-ping 2001:DB8:1:1::2
-
-tracert 2001:DB8:1:1::2
-
-For R3: 
-cisco
-enable
-class
-
-show ipv6 interface brief 
-
-
-For PC2:
-
-ipv6config /all
-
-ping 2001:DB8:1:4::2
-
-For PC4:
-
-ping 2001:DB8:1:1::2
-
-
+ping 172.16.1.4
