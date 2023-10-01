@@ -1,37 +1,45 @@
-for Edge_Route:
+For R1:
+
 
 en
-connf t
-ip route 0.0.0.0 0.0.0.0 s0/0/0
-exit
-show ip route 
-traceroute 198.0.0.10
 conf t
-ip route 0.0.0.0 0.0.0.0 s0/0/1 5
-show ip route 
-show run
-conf t
-int s0/0/0
-shut
+ip route 0.0.0.0 0.0.0.0 s0/0/1
+router rip
+version 2
+no auto-summary
+network 192.168.1.0
+network 192.168.2.0
+passive-interface g0/0
+default-information originate 
 end
 
+
+For R2:
+
+en
 conf t
-int s0/0/0
-no shut
+router rip
+version 2
+no auto-summary
+network 192.168.2.0
+network 192.168.3.0
+network 192.168.4.0
+passive-interface g0/0
 exit
-show ip route
-
-
-
-for Edge_Route(IPV6):
-
-ipv6 uni
-ipv6 route ::/0 2001:DB8:A:2::1 5
 exit
-show run
+
+
+
+For R3:
+
+en
 conf t
-int s0/0/0
-exit 
+router rip
+version 2
+no auto-summary
+network 192.168.4.0
+network 192.168.5.0
+passive-interface g0/0
 exit
-
+exit
 
