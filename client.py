@@ -20,13 +20,6 @@ def send_message(message):
     client.send(message)
 
     print(client.recv(1024).decode(FORMAT))
-    print(client.recv(1024).decode(FORMAT))
-    
-    
-while True:
-    n = input("worke hour : ")
-    if n =='Done':
-        send_message(DISCONNECT_MESSAGE)
-        break
-    else:
-        send_message(n)
+
+send_message(f'Client IP: {SERVER}, Device Name: {socket.gethostname()}')
+send_message(DISCONNECT_MESSAGE)

@@ -25,12 +25,6 @@ while connection:
                 connection =  False
                 conn.send('Connection Closed.'.encode(FORMAT))
         else:
-            message=int(message)
-            if message<=40:
-                r=str(message*200)
-                conn.send(r.encode(FORMAT))
-            else:
-                r=str(8000+(message-40)*300)
-                conn.send(r.encode(FORMAT))
+            print (message)
             conn.send('Message Received.'.encode(FORMAT))
 conn.close()
