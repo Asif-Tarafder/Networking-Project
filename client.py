@@ -20,6 +20,13 @@ def send_message(message):
     client.send(message)
 
     print(client.recv(1024).decode(FORMAT))
-
-send_message(f'Client IP: {SERVER}, Device Name: {socket.gethostname()}')
-send_message(DISCONNECT_MESSAGE)
+    print(client.recv(1024).decode(FORMAT))
+    
+    
+while True:
+    n = input("enter a word: ")
+    if n =='Done':
+        send_message(DISCONNECT_MESSAGE)
+        break
+    else:
+        send_message(n)

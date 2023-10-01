@@ -25,6 +25,16 @@ while connection:
                 connection =  False
                 conn.send('Connection Closed.'.encode(FORMAT))
         else:
-            print (message)
+            c=0
+            for i in message:
+                if i in "aeiouAEIOU":
+                    c+=1
+            
+            if c==0:
+                conn.send("Not enough vowels".encode(FORMAT))
+            elif c<=2:
+                conn.send("Enough vowels I guess".encode(FORMAT))
+            else:
+                conn.send("Too many vowels".encode(FORMAT))
             conn.send('Message Received.'.encode(FORMAT))
 conn.close()
