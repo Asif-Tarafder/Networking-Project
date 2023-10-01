@@ -1,26 +1,37 @@
-For R1:
+for Edge_Route:
 
 en
+connf t
+ip route 0.0.0.0 0.0.0.0 s0/0/0
+exit
+show ip route 
+traceroute 198.0.0.10
 conf t
-ip route 172.31.0.0 255.255.255.0 172.31.1.193
-ip route 172.31.1.128 255.255.255.192 172.31.1.193
-ip route 172.31.1.196 255.255.255.252 172.31.1.193
-
-For R2:
-
-en
+ip route 0.0.0.0 0.0.0.0 s0/0/1 5
+show ip route 
+show run
 conf t
-ip route 172.31.0.0 255.255.255.0 s0/0/0
-ip route 172.31.1.128 255.255.255.192 s0/0/1
+int s0/0/0
+shut
+end
 
-For R3:
-
-en
 conf t
-ip route 0.0.0.0 0.0.0.0 s0/0/1
+int s0/0/0
+no shut
+exit
+show ip route
 
 
 
+for Edge_Route(IPV6):
 
+ipv6 uni
+ipv6 route ::/0 2001:DB8:A:2::1 5
+exit
+show run
+conf t
+int s0/0/0
+exit 
+exit
 
 
