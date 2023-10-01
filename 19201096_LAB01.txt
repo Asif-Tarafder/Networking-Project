@@ -1,0 +1,98 @@
+ 
+#For R1 
+
+
+>enable
+#erase startup-config
+Erasing the nvram filesystem will remove all files! Continue? [confirm]
+Erase of nvram: complete
+
+#reload
+System configuration has been modified. Save? [yes/no]:
+Would you like to enter the initial configuration dialog? [yes/no]: no
+Would you like to terminate autoinstall? [yes]:
+Press Enter to accept default.
+
+>enable
+#configure terminal
+#hostname R1
+#no ip domain-lookup
+#enable secret class
+#banner motd &
+********************************
+!!!AUTHORIZED ACCESS ONLY!!!
+********************************
+&
+
+#line console 0
+#password cisco
+#login
+#exit
+
+#line vty 0 4
+#password cisco
+#login
+#exit
+
+#interface fastethernet 0/0
+#ip address 192.168.1.1 255.255.255.0
+#no shutdown
+
+#interface serial 0/0/0
+#ip address 192.168.2.1 255.255.255.0
+#clock rate 64000
+#no shutdown
+
+#end
+#copy running-config startup-config
+Building configuration...
+
+
+
+
+
+#For R2
+
+>enable
+#erase startup-config
+Erasing the nvram filesystem will remove all files! Continue? [confirm]
+Erase of nvram: complete
+
+#reload
+System configuration has been modified. Save? [yes/no]:
+Would you like to enter the initial configuration dialog? [yes/no]: no
+Would you like to terminate autoinstall? [yes]:
+Press Enter to accept default.
+
+>enable
+#configure terminal
+#hostname R2
+#no ip domain-lookup
+#enable secret class
+#banner motd &
+********************************
+!!!AUTHORIZED ACCESS ONLY!!!
+********************************
+&
+
+#line console 0
+#password cisco
+#login
+#exit
+
+#line vty 0 4
+#password cisco
+#login
+#exit
+
+#interface serial 0/0/0
+#ip address 192.168.2.2 255.255.255.0
+#no shutdown
+
+#interface fastethernet 0/0
+#ip address 192.168.3.1 255.255.255.0
+#no shutdown
+
+#end
+#copy running-config startup-config
+Building configuration...
