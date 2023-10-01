@@ -1,0 +1,110 @@
+
+For PC1:
+
+ipconfig /all
+
+ping 10.10.1.18
+
+tracert 10.10.1.18
+
+CTRL+C
+
+
+For PC3:
+
+ipconfig /all
+
+ping 10.10.1.98
+
+tracert 10.10.1.98
+
+CTRL+C
+
+
+For R1:
+
+cisco
+enable
+class
+
+show ip interface brief 
+
+show ip route 
+
+
+For R3:
+
+cisco
+enable
+class
+
+show ip interface brief 
+
+show ip route 
+
+
+For R2:
+
+cisco
+enable
+class
+
+show ip interface brief 
+
+show ip route 
+
+configure terminal
+
+interface s0/0/0
+
+ip address 10.10.1.5 255.255.255.252
+
+no shutdown
+
+
+For PC1:
+
+ping 10.10.1.18
+
+For PC3:
+
+ping 10.10.1.98
+
+
+
+
+For PC2:
+
+ipv6config /all
+
+ping 2001:DB8:1:4::2
+
+tracert 2001:DB8:1:4::2
+
+For PC4:
+
+ipv6config /all
+
+ping 2001:DB8:1:1::2
+
+tracert 2001:DB8:1:1::2
+
+For R3: 
+cisco
+enable
+class
+
+show ipv6 interface brief 
+
+
+For PC2:
+
+ipv6config /all
+
+ping 2001:DB8:1:4::2
+
+For PC4:
+
+ping 2001:DB8:1:1::2
+
+
